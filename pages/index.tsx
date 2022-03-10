@@ -4,8 +4,10 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import jsbeautify from "js-beautify";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Home: NextPage = () => {
+  const [clipboard, setClipboard] = useState("Copy to clipboard");
   const [intefaceContent, setInterfaceContent] = useState(`
   interface IEmployee {
     empCode: number;
@@ -39,6 +41,7 @@ const Home: NextPage = () => {
 
     final = `{${final}}`;
 
+    setClipboard("Copy to clipboard");
     setSampleJsonContent(
       jsbeautify(final, { indent_size: 2, space_in_empty_paren: true })
     );
@@ -72,7 +75,16 @@ const Home: NextPage = () => {
           ></textarea>
         </div>
         <div style={{ flexDirection: "column" }}>
-          <h3>JSON Payload</h3>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <h3>JSON Payload</h3>
+            <CopyToClipboard
+              text={sampleJsonContent}
+              onCopy={() => setClipboard("copied")}
+            >
+              <button className={styles.btncopy}>{clipboard}</button>
+            </CopyToClipboard>
+          </div>
+
           <textarea
             className={styles.editor}
             value={sampleJsonContent}
