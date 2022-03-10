@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Highlight from "react-highlight";
 import { useEffect, useState } from "react";
+import jsbeautify from "js-beautify";
 
 const Home: NextPage = () => {
   const [intefaceContent, setInterfaceContent] = useState(`
@@ -39,7 +39,9 @@ const Home: NextPage = () => {
 
     final = `{${final}}`;
 
-    setSampleJsonContent(final);
+    setSampleJsonContent(
+      jsbeautify(final, { indent_size: 2, space_in_empty_paren: true })
+    );
   }, [intefaceContent]);
 
   return (
