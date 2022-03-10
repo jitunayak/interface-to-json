@@ -51,28 +51,32 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h2 className={styles.title}>
           Convert Interfaces to Sample JSON Payload
-        </h1>
+        </h2>
 
         <p className={styles.description}>
           Paste or write your interface below
-          <code className={styles.code}> text input</code>
         </p>
       </main>
 
-      <div>
-        <textarea
-          className={styles.editor}
-          value={intefaceContent}
-          onChange={(e) => setInterfaceContent(e.target.value)}
-        ></textarea>
-
-        <textarea
-          className={styles.editor}
-          value={sampleJsonContent}
-          onChange={(e) => setSampleJsonContent(e.target.value)}
-        ></textarea>
+      <div className={styles.containereditor}>
+        <div style={{ flexDirection: "column" }}>
+          <h3>Interface</h3>
+          <textarea
+            className={styles.editor}
+            value={intefaceContent}
+            onChange={(e) => setInterfaceContent(e.target.value)}
+          ></textarea>
+        </div>
+        <div style={{ flexDirection: "column" }}>
+          <h3>JSON Payload</h3>
+          <textarea
+            className={styles.editor}
+            value={sampleJsonContent}
+            onChange={(e) => setSampleJsonContent(e.target.value)}
+          ></textarea>
+        </div>
       </div>
       <footer className={styles.footer}>
         <a
@@ -84,6 +88,14 @@ const Home: NextPage = () => {
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
+        </a>
+
+        <a
+          href="https://github.com/jitunayak"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Build by Jitu Nayak
         </a>
       </footer>
     </div>
