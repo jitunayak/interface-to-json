@@ -114,3 +114,10 @@
     flex-direction: column;
   }
 }
+
+.editor {
+  background-color: #ededed;
+  min-height: 500px;
+  min-width: 500px;
+  font-size: large;
+}
